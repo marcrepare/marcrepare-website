@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { FaWhatsapp } from "react-icons/fa6";
+import { FiMail } from "react-icons/fi";
 
-const WHATSAPP_NUMBER = "message/DPLC7GENBPZCF1";
+const EMAIL_ADDRESS = "contact@marcrepare.ci";
 
 const SERVICES = [
   "Maintenance et réparation informatique",
@@ -30,12 +30,15 @@ export default function QuickRequest() {
     .filter(Boolean)
     .join(" ");
 
-  const href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  const href = `mailto:${EMAIL_ADDRESS}?subject=${encodeURIComponent("Demande de service MARC RÉPARE")}&body=${encodeURIComponent(message)}`;
 
   return (
     <div className="relative z-10 px-6 -mt-16 md:-mt-[72px]">
       <form
-        onSubmit={(e) => e.preventDefault()}
+        onSubmit={(e) => {
+          e.preventDefault();
+          window.location.href = href;
+        }}
         className="max-w-[1180px] mx-auto rounded-2xl bg-white border border-line shadow-[0_20px_50px_-20px_rgba(11,22,51,0.25)] p-5 md:p-6 grid grid-cols-1 md:grid-cols-[1fr_1fr_1.3fr_auto] gap-3.5"
       >
         <div>
@@ -79,15 +82,13 @@ export default function QuickRequest() {
             ))}
           </select>
         </div>
-        <a
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          type="submit"
           className="self-end inline-flex items-center justify-center gap-2 rounded-lg bg-accent text-white font-semibold text-[14px] px-5 py-2.5 shadow-[0_10px_20px_-8px_rgba(11,125,146,0.55)] hover:brightness-110 transition"
         >
-          <FaWhatsapp aria-hidden="true" />
+          <FiMail aria-hidden="true" />
           Demander
-        </a>
+        </button>
       </form>
     </div>
   );
