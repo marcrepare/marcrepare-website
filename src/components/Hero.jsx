@@ -32,42 +32,52 @@ export default function Hero() {
           </div>
 
           <h1 className="font-display font-bold text-[clamp(2.2rem,5.2vw,3.6rem)] leading-[1.08] tracking-tight mb-6 text-ink">
-            Votre problème,
+            Votre ordinateur est en panne ?
             <br />
-            <span className="text-accent">notre solution.</span>
+            <span className="text-accent">
+              Ne le remplacez pas avant de nous consulter.
+            </span>
           </h1>
 
-          <p className="text-ink-muted max-w-[520px] mb-9 text-[16.5px] leading-relaxed">
-            MARC RÉPARE assure la maintenance, le dépannage, l'installation et
-            la configuration de vos équipements informatiques et réseaux —
-            pour particuliers, entreprises et professionnels.
+          <p className="text-ink-muted max-w-[560px] mb-9 text-[16.5px] leading-relaxed">
+            MARC RÉPARE diagnostique, répare et optimise vos PC, portables et
+            équipements informatiques à moindre coût. Intervention rapide,
+            devis clair et assistance locale.
           </p>
 
           <div className="flex flex-wrap items-center gap-3.5 mb-10">
+            <a href="#contact" className={`${BTN_PRIMARY} justify-center`}>
+              Faire réparer mon ordinateur
+            </a>
             <a
               href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className={`${BTN_PRIMARY} justify-center`}
+              className={`${BTN_GHOST} justify-center`}
             >
               <FaWhatsapp aria-hidden="true" />
-              Écrire sur WhatsApp
+              WhatsApp
             </a>
             <a href={PHONE_LINK} className={`${BTN_GHOST} justify-center`}>
               <FiPhoneCall aria-hidden="true" />
-              {PHONE_DISPLAY}
+              Appeler maintenant
             </a>
           </div>
 
-          <div className="flex flex-wrap items-center gap-x-7 gap-y-2.5">
-            {["Diagnostic clair", "Intervention rapide", "Pièces garanties"].map(
-              (t) => (
-                <div key={t} className="flex items-center gap-2 text-[13.5px] text-ink-muted">
-                  <FiCheckCircle className="text-accent shrink-0" aria-hidden="true" />
-                  {t}
-                </div>
-              )
-            )}
+          <div className="flex flex-wrap items-center gap-x-7 gap-y-2.5 text-[13.5px] text-ink-muted">
+            {[
+              "Diagnostic clair",
+              "Intervention rapide",
+              "Devis avant intervention",
+            ].map((t) => (
+              <div key={t} className="flex items-center gap-2">
+                <FiCheckCircle
+                  className="text-accent shrink-0"
+                  aria-hidden="true"
+                />
+                {t}
+              </div>
+            ))}
           </div>
         </div>
 
@@ -118,7 +128,7 @@ export default function Hero() {
               100%
             </div>
             <div className="text-[11.5px] text-ink-muted mt-1">
-              service sécurisé
+              satisfaction client
             </div>
           </div>
         </div>

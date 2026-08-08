@@ -4,6 +4,7 @@ import Hero from "../components/Hero.jsx";
 import QuickRequest from "../components/QuickRequest.jsx";
 import Features from "../components/Features.jsx";
 import Mission from "../components/Mission.jsx";
+import Testimonials from "../components/Testimonials.jsx";
 import Services from "../components/Services.jsx";
 import Contact from "../components/Contact.jsx";
 
@@ -26,6 +27,7 @@ export default function Home() {
       <QuickRequest />
       <Features />
       <Mission />
+      <Testimonials />
       <Services />
       <Contact />
     </>

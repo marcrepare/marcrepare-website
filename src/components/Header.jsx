@@ -18,6 +18,7 @@ export default function Header() {
 
   const links = [
     { type: "route", to: "/services", label: "Services" },
+    { type: "route", to: "/description-de-panne", label: "Description de panne" },
     { type: "scroll", targetId: "mission", label: "À propos" },
     { type: "scroll", targetId: "contact", label: "Contact" },
   ];
