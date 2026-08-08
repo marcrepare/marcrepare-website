@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FiMail } from "react-icons/fi";
 
-const EMAIL_ADDRESS = "contact@marcrepare.ci";
+const EMAIL_ADDRESS = "marcrepare.ci@gmail.com";
 
 const SERVICES = [
   "Maintenance et réparation informatique",
