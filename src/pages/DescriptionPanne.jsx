@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { FaWhatsapp } from "react-icons/fa6";
 import PageBanner from "../components/PageBanner.jsx";
 
-const WHATSAPP_NUMBER = "message/DPLC7GENBPZCF1";
+const CONTACT_EMAIL = "marcrepare.ci@gmail.com";
 const SERVICES = [
     "Maintenance et réparation informatique",
     "Réseaux et câblage",
@@ -32,7 +31,7 @@ export default function DescriptionPanne() {
         .filter(Boolean)
         .join(" ");
 
-    const href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    const href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Demande de prise en charge - MARC RÉPARE")}&body=${encodeURIComponent(message)}`;
 
     return (
         <>
@@ -165,12 +164,9 @@ export default function DescriptionPanne() {
                                         <div className="flex flex-col items-center gap-4">
                                             <a
                                                 href={href}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-4 text-sm font-semibold text-white transition hover:brightness-110"
+                                                className="inline-flex items-center justify-center rounded-full bg-accent px-6 py-4 text-sm font-semibold text-white transition hover:brightness-110"
                                             >
-                                                <FaWhatsapp aria-hidden="true" />
-                                                Envoyer via WhatsApp
+                                                Envoyer par e-mail
                                             </a>
                                             <p className="text-center text-xs text-ink-muted max-w-xs">
                                                 Votre message sera pré-rempli avec les informations saisies.
