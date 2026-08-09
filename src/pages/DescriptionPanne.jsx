@@ -2,6 +2,7 @@ import { useState } from "react";
 import PageBanner from "../components/PageBanner.jsx";
 
 const CONTACT_EMAIL = "marcrepare.ci@gmail.com";
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const SERVICES = [
     "Maintenance et réparation informatique",
     "Réseaux et câblage",
@@ -16,14 +17,19 @@ const SERVICES = [
 export default function DescriptionPanne() {
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
+    const [email, setEmail] = useState("");
     const [device, setDevice] = useState("");
     const [service, setService] = useState("");
     const [details, setDetails] = useState("");
+
+    const isEmailValid = email === "" || EMAIL_REGEX.test(email);
+    const emailError = email && !isEmailValid ? "Veuillez saisir une adresse e-mail valide." : "";
 
     const message = [
         "Bonjour MARC RÉPARE,",
         name && `Je m'appelle ${name}.`,
         phone && `Mon contact : ${phone}.`,
+        email && `Email : ${email}.`,
         device && `Appareil : ${device}.`,
         service && `Service souhaité : ${service}.`,
         details && `Description de la panne : ${details}.`,
@@ -32,6 +38,7 @@ export default function DescriptionPanne() {
         .join(" ");
 
     const href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Demande de prise en charge - MARC RÉPARE")}&body=${encodeURIComponent(message)}`;
+    const isSubmitEnabled = name.trim() && phone.trim() && isEmailValid && device.trim() && service.trim() && details.trim();
 
     return (
         <>
@@ -119,6 +126,24 @@ export default function DescriptionPanne() {
 
                                         <div>
                                             <label className="block text-[12px] font-medium text-ink-muted mb-2">
+                                                Adresse e-mail
+                                            </label>
+                                            <input
+                                                type="email"
+                                                value={email}
+                                                onChange={(e) => setEmail(e.target.value)}
+                                                placeholder="Votre adresse e-mail"
+                                                pattern="^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
+                                                title="Saisissez une adresse e-mail valide"
+                                                className="w-full rounded-[24px] border border-line bg-white px-4 py-4 text-[14px] text-ink shadow-sm focus:outline-none focus:border-accent-2"
+                                            />
+                                            {emailError ? (
+                                                <p className="mt-2 text-xs text-red-600">{emailError}</p>
+                                            ) : null}
+                                        </div>
+
+                                        <div>
+                                            <label className="block text-[12px] font-medium text-ink-muted mb-2">
                                                 Appareil
                                             </label>
                                             <input
@@ -163,8 +188,17 @@ export default function DescriptionPanne() {
 
                                         <div className="flex flex-col items-center gap-4">
                                             <a
-                                                href={href}
-                                                className="inline-flex items-center justify-center rounded-full bg-accent px-6 py-4 text-sm font-semibold text-white transition hover:brightness-110"
+                                                href={isSubmitEnabled ? href : undefined}
+                                                onClick={(e) => {
+                                                    if (!isSubmitEnabled) {
+                                                        e.preventDefault();
+                                                    }
+                                                }}
+                                                className={`inline-flex items-center justify-center rounded-full px-6 py-4 text-sm font-semibold text-white transition ${
+                                                    isSubmitEnabled
+                                                        ? "bg-accent hover:brightness-110"
+                                                        : "cursor-not-allowed bg-slate-400"
+                                                }`}
                                             >
                                                 Envoyer par e-mail
                                             </a>

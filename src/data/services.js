@@ -60,10 +60,17 @@ export const SERVICES = [
     image: "/images/services/reseaux.jpg",
   },
   {
+    slug: "installation-starlink",
+    icon: FaSatelliteDish,
+    title: "Installation d’antène Starlink",
+    desc: "Mise en place d’une connexion Internet par satellite avec installation professionnelle et réglages optimisés.",
+    image: "/images/services/starlink2.jpg",
+  },
+  {
     slug: "videosurveillance",
     icon: FaSatelliteDish,
     title: "Installation vidéosurveillance",
     desc: "Mise en place de caméras et contrôle à distance pour sécuriser votre local.",
-    image: "/images/services/starlink.jpg",
+    image: "/images/services/videoSurveillance.jpg",
   },
 ];
