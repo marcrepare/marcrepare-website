@@ -29,39 +29,43 @@ export default function Hero() {
             className="inline-flex items-center gap-2.5 rounded-full bg-white border border-line px-3.5 py-1.5 font-mono text-[12.5px] text-ink-muted mb-7 shadow-sm"
           >
             <span className="w-[7px] h-[7px] rounded-full bg-ok animate-pulse-dot" />
-            Techniciens disponibles à Abidjan
+
+            Service informatique à Abidjan
           </div>
 
           <h1
             id="hero-title"
             className="font-display font-bold text-[clamp(2.2rem,5.2vw,3.6rem)] leading-[1.08] tracking-tight mb-6 text-ink"
           >
-            Service informatique à Abidjan
+            Service informatique
             <br />
+
             <span className="text-accent">
-              Maintenance, réseaux et assistance informatique
+              à Abidjan
             </span>
           </h1>
 
           <p className="text-ink-muted max-w-[560px] mb-9 text-[16.5px] leading-relaxed">
-            MARC RÉPARE est votre spécialiste en service informatique à
-            Abidjan. Nous intervenons pour la maintenance et réparation
-            d'ordinateurs, l'installation de réseaux, la vidéosurveillance et
-            l'installation de Starlink. Intervention rapide, diagnostic clair
-            et devis avant intervention.
+            MARC RÉPARE vous accompagne pour la réparation et la maintenance
+            informatique à Abidjan. Nous intervenons sur les PC et ordinateurs
+            portables, les réseaux et le Wi-Fi, l'installation Starlink, la
+            vidéosurveillance et le dépannage informatique.
           </p>
 
           <div className="flex flex-wrap items-center gap-3.5 mb-10">
-            <a href="#contact" className={`${BTN_PRIMARY} justify-center`}>
-              Faire réparer mon ordinateur
+            <a
+              href="#contact"
+              className={`${BTN_PRIMARY} justify-center`}
+            >
+              Demander une intervention
             </a>
 
             <a
               href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Contacter MARC RÉPARE sur WhatsApp"
               className={`${BTN_GHOST} justify-center`}
+              aria-label="Contacter MARC RÉPARE sur WhatsApp"
             >
               <FaWhatsapp aria-hidden="true" />
               WhatsApp
@@ -69,8 +73,8 @@ export default function Hero() {
 
             <a
               href={PHONE_LINK}
-              aria-label={`Appeler MARC RÉPARE au ${PHONE_DISPLAY}`}
               className={`${BTN_GHOST} justify-center`}
+              aria-label={`Appeler MARC RÉPARE au ${PHONE_DISPLAY}`}
             >
               <FiPhoneCall aria-hidden="true" />
               Appeler maintenant
@@ -82,13 +86,17 @@ export default function Hero() {
               "Diagnostic clair",
               "Intervention rapide",
               "Devis avant intervention",
-            ].map((t) => (
-              <div key={t} className="flex items-center gap-2">
+            ].map((text) => (
+              <div
+                key={text}
+                className="flex items-center gap-2"
+              >
                 <FiCheckCircle
                   className="text-accent shrink-0"
                   aria-hidden="true"
                 />
-                {t}
+
+                {text}
               </div>
             ))}
           </div>
@@ -98,7 +106,7 @@ export default function Hero() {
           <div className="relative mx-auto max-w-[380px] rounded-[22px] overflow-hidden shadow-[0_30px_60px_-20px_rgba(11,22,51,0.35)] aspect-[4/5]">
             <img
               src="/images/services/maintenance.jpg"
-              alt="Technicien en maintenance informatique à Abidjan - MARC RÉPARE"
+              alt="Technicien informatique MARC RÉPARE en intervention à Abidjan"
               className="absolute inset-0 w-full h-full object-cover"
             />
 
@@ -111,6 +119,7 @@ export default function Hero() {
 
               <span className="inline-flex items-center gap-1.5 font-mono text-[11px] text-ok bg-ink-2/60 backdrop-blur-sm rounded-full px-3 py-1">
                 <span className="w-[5px] h-[5px] rounded-full bg-ok animate-pulse-dot" />
+
                 en cours
               </span>
             </div>
