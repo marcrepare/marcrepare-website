@@ -10,6 +10,7 @@ export default function Hero() {
   return (
     <section
       id="top"
+      aria-labelledby="hero-title"
       className="relative overflow-hidden px-6 pt-32 pb-24 md:pt-40 md:pb-32 bg-gradient-to-b from-accent-soft/70 via-bg to-bg"
     >
       <div
@@ -31,34 +32,46 @@ export default function Hero() {
             Techniciens disponibles à Abidjan
           </div>
 
-          <h1 className="font-display font-bold text-[clamp(2.2rem,5.2vw,3.6rem)] leading-[1.08] tracking-tight mb-6 text-ink">
-            Votre ordinateur est en panne ?
+          <h1
+            id="hero-title"
+            className="font-display font-bold text-[clamp(2.2rem,5.2vw,3.6rem)] leading-[1.08] tracking-tight mb-6 text-ink"
+          >
+            Service informatique à Abidjan
             <br />
             <span className="text-accent">
-              Ne le remplacez pas avant de nous consulter.
+              Maintenance, réseaux et assistance informatique
             </span>
           </h1>
 
           <p className="text-ink-muted max-w-[560px] mb-9 text-[16.5px] leading-relaxed">
-            MARC RÉPARE diagnostique, répare et optimise vos PC, portables et
-            équipements informatiques à moindre coût. Intervention rapide,
-            devis clair et assistance locale.
+            MARC RÉPARE est votre spécialiste en service informatique à
+            Abidjan. Nous intervenons pour la maintenance et réparation
+            d'ordinateurs, l'installation de réseaux, la vidéosurveillance et
+            l'installation de Starlink. Intervention rapide, diagnostic clair
+            et devis avant intervention.
           </p>
 
           <div className="flex flex-wrap items-center gap-3.5 mb-10">
             <a href="#contact" className={`${BTN_PRIMARY} justify-center`}>
               Faire réparer mon ordinateur
             </a>
+
             <a
               href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Contacter MARC RÉPARE sur WhatsApp"
               className={`${BTN_GHOST} justify-center`}
             >
               <FaWhatsapp aria-hidden="true" />
               WhatsApp
             </a>
-            <a href={PHONE_LINK} className={`${BTN_GHOST} justify-center`}>
+
+            <a
+              href={PHONE_LINK}
+              aria-label={`Appeler MARC RÉPARE au ${PHONE_DISPLAY}`}
+              className={`${BTN_GHOST} justify-center`}
+            >
               <FiPhoneCall aria-hidden="true" />
               Appeler maintenant
             </a>
@@ -85,15 +98,17 @@ export default function Hero() {
           <div className="relative mx-auto max-w-[380px] rounded-[22px] overflow-hidden shadow-[0_30px_60px_-20px_rgba(11,22,51,0.35)] aspect-[4/5]">
             <img
               src="/images/services/maintenance.jpg"
-              alt="Technicien MARC RÉPARE en intervention"
+              alt="Technicien en maintenance informatique à Abidjan - MARC RÉPARE"
               className="absolute inset-0 w-full h-full object-cover"
             />
+
             <div className="absolute inset-0 bg-gradient-to-t from-ink-2/90 via-ink-2/10 to-transparent" />
 
             <div className="absolute top-5 left-5 right-5 flex items-center justify-between">
               <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-accent-2 bg-ink-2/60 backdrop-blur-sm rounded-full px-3 py-1">
                 Fiche d'intervention
               </span>
+
               <span className="inline-flex items-center gap-1.5 font-mono text-[11px] text-ok bg-ink-2/60 backdrop-blur-sm rounded-full px-3 py-1">
                 <span className="w-[5px] h-[5px] rounded-full bg-ok animate-pulse-dot" />
                 en cours
@@ -102,12 +117,19 @@ export default function Hero() {
 
             <div className="absolute bottom-5 left-5 right-5 rounded-2xl bg-ink-2/70 backdrop-blur-md border border-white/10 p-4 flex items-center justify-between">
               <div>
-                <div className="text-[13px] text-accent-2 mb-1">Statut</div>
+                <div className="text-[13px] text-accent-2 mb-1">
+                  Statut
+                </div>
+
                 <div className="text-[15px] text-white font-semibold">
                   Prêt pour restitution
                 </div>
               </div>
-              <FiCheckCircle className="text-2xl text-accent-2" aria-hidden="true" />
+
+              <FiCheckCircle
+                className="text-2xl text-accent-2"
+                aria-hidden="true"
+              />
             </div>
           </div>
 
@@ -115,6 +137,7 @@ export default function Hero() {
             <div className="text-[22px] font-display font-bold text-accent leading-none">
               2+
             </div>
+
             <div className="text-[11.5px] text-ink-muted mt-1">
               ans d'expérience
             </div>
@@ -127,6 +150,7 @@ export default function Hero() {
             <div className="text-[22px] font-display font-bold text-accent leading-none">
               100%
             </div>
+
             <div className="text-[11.5px] text-ink-muted mt-1">
               satisfaction client
             </div>
