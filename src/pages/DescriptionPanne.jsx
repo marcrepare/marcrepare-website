@@ -2,217 +2,312 @@ import { useState } from "react";
 import PageBanner from "../components/PageBanner.jsx";
 
 const CONTACT_EMAIL = "marcrepare.ci@gmail.com";
+
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 const SERVICES = [
-    "Maintenance et réparation informatique",
-    "Réseaux et câblage",
-    "Installation Starlink",
-    "Wi-Fi et couverture réseau",
-    "Installation d'équipements",
-    "Vidéosurveillance",
-    "Dépannage et diagnostic",
-    "Vente de matériel",
+  "Maintenance et réparation informatique",
+  "Réseaux et câblage",
+  "Installation Starlink",
+  "Wi-Fi et couverture réseau",
+  "Installation d'équipements informatiques",
+  "Vidéosurveillance",
+  "Dépannage et diagnostic",
+  "Vente de matériel informatique",
 ];
 
 export default function DescriptionPanne() {
-    const [name, setName] = useState("");
-    const [phone, setPhone] = useState("");
-    const [email, setEmail] = useState("");
-    const [device, setDevice] = useState("");
-    const [service, setService] = useState("");
-    const [details, setDetails] = useState("");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [device, setDevice] = useState("");
+  const [service, setService] = useState("");
+  const [details, setDetails] = useState("");
 
-    const isEmailValid = email === "" || EMAIL_REGEX.test(email);
-    const emailError = email && !isEmailValid ? "Veuillez saisir une adresse e-mail valide." : "";
+  const isEmailValid = email === "" || EMAIL_REGEX.test(email);
 
-    const message = [
-        "Bonjour MARC RÉPARE,",
-        name && `Je m'appelle ${name}.`,
-        phone && `Mon contact : ${phone}.`,
-        email && `Email : ${email}.`,
-        device && `Appareil : ${device}.`,
-        service && `Service souhaité : ${service}.`,
-        details && `Description de la panne : ${details}.`,
-    ]
-        .filter(Boolean)
-        .join(" ");
+  const emailError =
+    email && !isEmailValid
+      ? "Veuillez saisir une adresse e-mail valide."
+      : "";
 
-    const href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Demande de prise en charge - MARC RÉPARE")}&body=${encodeURIComponent(message)}`;
-    const isSubmitEnabled = name.trim() && phone.trim() && isEmailValid && device.trim() && service.trim() && details.trim();
+  const message = [
+    "Bonjour MARC RÉPARE,",
+    name && `Je m'appelle ${name}.`,
+    phone && `Mon contact : ${phone}.`,
+    email && `Email : ${email}.`,
+    device && `Appareil : ${device}.`,
+    service && `Service souhaité : ${service}.`,
+    details && `Description du problème : ${details}.`,
+  ]
+    .filter(Boolean)
+    .join(" ");
 
-    return (
-        <>
-            <PageBanner
-                title="Description de panne"
-                crumbs={["Description de panne"]}
-                image="/images/services/depannage.jpg"
-            />
+  const href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
+    "Demande de prise en charge - MARC RÉPARE"
+  )}&body=${encodeURIComponent(message)}`;
 
-            <section className="px-6 py-20 md:py-28 bg-bg">
-                <div className="max-w-[1180px] mx-auto">
-                    <div className="rounded-[32px] bg-white border border-line shadow-[0_20px_60px_-20px_rgba(11,22,51,0.15)] overflow-hidden">
-                        <div className="grid gap-0 lg:grid-cols-[0.95fr_1.05fr]">
-                            <div className="bg-surface-alt p-8 md:p-12 flex flex-col justify-center">
-                                <div className="text-sm uppercase tracking-[0.24em] text-accent mb-4">
-                                    Nous sommes là pour vous aider
-                                </div>
-                                <h2 className="font-display text-3xl md:text-[3rem] font-bold text-ink leading-tight">
-                                    Décrivez votre panne et recevez une prise en charge rapide.
-                                </h2>
-                                <p className="mt-6 max-w-xl text-[15.5px] text-ink-muted leading-relaxed">
-                                    Renseignez les détails de votre appareil et son dysfonctionnement. Nous vous
-                                    contactons rapidement pour un diagnostic clair et une intervention adaptée.
-                                </p>
+  const isSubmitEnabled =
+    name.trim() &&
+    phone.trim() &&
+    isEmailValid &&
+    device.trim() &&
+    service.trim() &&
+    details.trim();
 
-                                <div className="mt-10 grid gap-4">
-                                    <div className="rounded-[28px] bg-white p-6 shadow-sm">
-                                        <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-ink-muted mb-4">
-                                            Contact direct
-                                        </p>
-                                        <div className="space-y-4 text-[14px] text-ink">
-                                            <div>
-                                                <p className="font-semibold">Email</p>
-                                                <p className="text-ink-muted">marcrepare.ci@gmail.com</p>
-                                            </div>
-                                            <div>
-                                                <p className="font-semibold">Téléphone</p>
-                                                <p className="text-ink-muted">+225 01 04 21 92 38</p>
-                                            </div>
-                                        </div>
-                                    </div>
+  return (
+    <>
+      <PageBanner
+        title="Dépannage informatique à Abidjan"
+        crumbs={["Dépannage informatique"]}
+        image="/images/services/depannage.jpg"
+      />
 
-                                    <div className="rounded-[28px] bg-white p-6 shadow-sm">
-                                        <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-ink-muted mb-4">
-                                            Ce que nous avons besoin
-                                        </p>
-                                        <ul className="list-disc pl-5 space-y-2 text-[14px] text-ink-muted">
-                                            <li>Appareil concerné</li>
-                                            <li>Symptômes ou message d’erreur</li>
-                                            <li>Durée du problème</li>
-                                            <li>Service recherché</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="bg-surface-alt p-8 md:p-12 flex items-center justify-center">
-                                <div className="w-full max-w-xl rounded-[32px] bg-white p-8 shadow-[0_18px_56px_-24px_rgba(11,22,51,0.32)]">
-                                    <form onSubmit={(e) => e.preventDefault()} className="space-y-5">
-                                        <div>
-                                            <label className="block text-[12px] font-medium text-ink-muted mb-2">
-                                                Nom complet
-                                            </label>
-                                            <input
-                                                type="text"
-                                                value={name}
-                                                onChange={(e) => setName(e.target.value)}
-                                                placeholder="Votre nom"
-                                                className="w-full rounded-[24px] border border-line bg-white px-4 py-4 text-[14px] text-ink shadow-sm focus:outline-none focus:border-accent-2"
-                                            />
-                                        </div>
-
-                                        <div>
-                                            <label className="block text-[12px] font-medium text-ink-muted mb-2">
-                                                Téléphone
-                                            </label>
-                                            <input
-                                                type="tel"
-                                                value={phone}
-                                                onChange={(e) => setPhone(e.target.value)}
-                                                placeholder="Votre numéro"
-                                                className="w-full rounded-[24px] border border-line bg-white px-4 py-4 text-[14px] text-ink shadow-sm focus:outline-none focus:border-accent-2"
-                                            />
-                                        </div>
-
-                                        <div>
-                                            <label className="block text-[12px] font-medium text-ink-muted mb-2">
-                                                Adresse e-mail
-                                            </label>
-                                            <input
-                                                type="email"
-                                                value={email}
-                                                onChange={(e) => setEmail(e.target.value)}
-                                                placeholder="Votre adresse e-mail"
-                                                pattern="^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
-                                                title="Saisissez une adresse e-mail valide"
-                                                className="w-full rounded-[24px] border border-line bg-white px-4 py-4 text-[14px] text-ink shadow-sm focus:outline-none focus:border-accent-2"
-                                            />
-                                            {emailError ? (
-                                                <p className="mt-2 text-xs text-red-600">{emailError}</p>
-                                            ) : null}
-                                        </div>
-
-                                        <div>
-                                            <label className="block text-[12px] font-medium text-ink-muted mb-2">
-                                                Appareil
-                                            </label>
-                                            <input
-                                                type="text"
-                                                value={device}
-                                                onChange={(e) => setDevice(e.target.value)}
-                                                placeholder="Ex : PC portable, routeur, caméra"
-                                                className="w-full rounded-[24px] border border-line bg-white px-4 py-4 text-[14px] text-ink shadow-sm focus:outline-none focus:border-accent-2"
-                                            />
-                                        </div>
-
-                                        <div>
-                                            <label className="block text-[12px] font-medium text-ink-muted mb-2">
-                                                Service souhaité
-                                            </label>
-                                            <select
-                                                value={service}
-                                                onChange={(e) => setService(e.target.value)}
-                                                className="w-full rounded-[24px] border border-line bg-white px-4 py-4 text-[14px] text-ink shadow-sm focus:outline-none focus:border-accent-2"
-                                            >
-                                                <option value="">Choisir un service</option>
-                                                {SERVICES.map((item) => (
-                                                    <option key={item} value={item}>
-                                                        {item}
-                                                    </option>
-                                                ))}
-                                            </select>
-                                        </div>
-
-                                        <div>
-                                            <label className="block text-[12px] font-medium text-ink-muted mb-2">
-                                                Description de la panne
-                                            </label>
-                                            <textarea
-                                                value={details}
-                                                onChange={(e) => setDetails(e.target.value)}
-                                                placeholder="Expliquez le problème, les erreurs, et depuis quand cela arrive"
-                                                rows={6}
-                                                className="w-full rounded-[24px] border border-line bg-white px-4 py-4 text-[14px] text-ink shadow-sm focus:outline-none focus:border-accent-2"
-                                            />
-                                        </div>
-
-                                        <div className="flex flex-col items-center gap-4">
-                                            <a
-                                                href={isSubmitEnabled ? href : undefined}
-                                                onClick={(e) => {
-                                                    if (!isSubmitEnabled) {
-                                                        e.preventDefault();
-                                                    }
-                                                }}
-                                                className={`inline-flex items-center justify-center rounded-full px-6 py-4 text-sm font-semibold text-white transition ${
-                                                    isSubmitEnabled
-                                                        ? "bg-accent hover:brightness-110"
-                                                        : "cursor-not-allowed bg-slate-400"
-                                                }`}
-                                            >
-                                                Envoyer par e-mail
-                                            </a>
-                                            <p className="text-center text-xs text-ink-muted max-w-xs">
-                                                Votre message sera pré-rempli avec les informations saisies.
-                                            </p>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+      <section
+        aria-labelledby="depannage-title"
+        className="px-6 py-20 md:py-28 bg-bg"
+      >
+        <div className="max-w-[1180px] mx-auto">
+          <div className="rounded-[32px] bg-white border border-line shadow-[0_20px_60px_-20px_rgba(11,22,51,0.15)] overflow-hidden">
+            <div className="grid gap-0 lg:grid-cols-[0.95fr_1.05fr]">
+              {/* Présentation */}
+              <div className="bg-surface-alt p-8 md:p-12 flex flex-col justify-center">
+                <div className="text-sm uppercase tracking-[0.24em] text-accent mb-4">
+                  Assistance informatique à Abidjan
                 </div>
-            </section>
-        </>
-    );
+
+                <h1
+                  id="depannage-title"
+                  className="font-display text-3xl md:text-[3rem] font-bold text-ink leading-tight"
+                >
+                  Décrivez votre problème informatique et recevez une prise en
+                  charge rapide.
+                </h1>
+
+                <p className="mt-6 max-w-xl text-[15.5px] text-ink-muted leading-relaxed">
+                  Décrivez votre problème informatique, votre ordinateur ou
+                  votre équipement réseau. MARC RÉPARE intervient à Abidjan
+                  pour le dépannage, la maintenance informatique, les réseaux,
+                  le Wi-Fi, l'installation Starlink et la vidéosurveillance.
+                  Nous vous contactons rapidement pour établir un diagnostic
+                  et proposer une intervention adaptée.
+                </p>
+
+                {/* Contact direct */}
+                <div className="mt-10 grid gap-4">
+                  <div className="rounded-[28px] bg-white p-6 shadow-sm">
+                    <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-ink-muted mb-4">
+                      Contact direct
+                    </p>
+
+                    <div className="space-y-4 text-[14px] text-ink">
+                      <div>
+                        <p className="font-semibold">Email</p>
+                        <p className="text-ink-muted">
+                          {CONTACT_EMAIL}
+                        </p>
+                      </div>
+
+                      <div>
+                        <p className="font-semibold">Téléphone</p>
+                        <p className="text-ink-muted">
+                          +225 01 04 21 92 38
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Informations nécessaires */}
+                  <div className="rounded-[28px] bg-white p-6 shadow-sm">
+                    <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-ink-muted mb-4">
+                      Ce dont nous avons besoin
+                    </p>
+
+                    <ul className="list-disc pl-5 space-y-2 text-[14px] text-ink-muted">
+                      <li>Appareil concerné</li>
+                      <li>Symptômes ou message d'erreur</li>
+                      <li>Durée du problème</li>
+                      <li>Service recherché</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Formulaire */}
+              <div className="bg-surface-alt p-8 md:p-12 flex items-center justify-center">
+                <div className="w-full max-w-xl rounded-[32px] bg-white p-8 shadow-[0_18px_56px_-24px_rgba(11,22,51,0.32)]">
+                  <form
+                    onSubmit={(e) => e.preventDefault()}
+                    className="space-y-5"
+                  >
+                    {/* Nom */}
+                    <div>
+                      <label
+                        htmlFor="name"
+                        className="block text-[12px] font-medium text-ink-muted mb-2"
+                      >
+                        Nom complet
+                      </label>
+
+                      <input
+                        id="name"
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="Votre nom"
+                        autoComplete="name"
+                        required
+                        className="w-full rounded-[24px] border border-line bg-white px-4 py-4 text-[14px] text-ink shadow-sm focus:outline-none focus:border-accent-2"
+                      />
+                    </div>
+
+                    {/* Téléphone */}
+                    <div>
+                      <label
+                        htmlFor="phone"
+                        className="block text-[12px] font-medium text-ink-muted mb-2"
+                      >
+                        Téléphone
+                      </label>
+
+                      <input
+                        id="phone"
+                        type="tel"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        placeholder="Votre numéro"
+                        autoComplete="tel"
+                        required
+                        className="w-full rounded-[24px] border border-line bg-white px-4 py-4 text-[14px] text-ink shadow-sm focus:outline-none focus:border-accent-2"
+                      />
+                    </div>
+
+                    {/* Email */}
+                    <div>
+                      <label
+                        htmlFor="email"
+                        className="block text-[12px] font-medium text-ink-muted mb-2"
+                      >
+                        Adresse e-mail
+                      </label>
+
+                      <input
+                        id="email"
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Votre adresse e-mail"
+                        autoComplete="email"
+                        pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+                        title="Saisissez une adresse e-mail valide"
+                        required
+                        className="w-full rounded-[24px] border border-line bg-white px-4 py-4 text-[14px] text-ink shadow-sm focus:outline-none focus:border-accent-2"
+                      />
+
+                      {emailError && (
+                        <p className="mt-2 text-xs text-red-600">
+                          {emailError}
+                        </p>
+                      )}
+                    </div>
+
+                    {/* Appareil */}
+                    <div>
+                      <label
+                        htmlFor="device"
+                        className="block text-[12px] font-medium text-ink-muted mb-2"
+                      >
+                        Appareil ou équipement
+                      </label>
+
+                      <input
+                        id="device"
+                        type="text"
+                        value={device}
+                        onChange={(e) => setDevice(e.target.value)}
+                        placeholder="Ex : PC portable, routeur, caméra"
+                        required
+                        className="w-full rounded-[24px] border border-line bg-white px-4 py-4 text-[14px] text-ink shadow-sm focus:outline-none focus:border-accent-2"
+                      />
+                    </div>
+
+                    {/* Service */}
+                    <div>
+                      <label
+                        htmlFor="service"
+                        className="block text-[12px] font-medium text-ink-muted mb-2"
+                      >
+                        Service souhaité
+                      </label>
+
+                      <select
+                        id="service"
+                        value={service}
+                        onChange={(e) => setService(e.target.value)}
+                        required
+                        className="w-full rounded-[24px] border border-line bg-white px-4 py-4 text-[14px] text-ink shadow-sm focus:outline-none focus:border-accent-2"
+                      >
+                        <option value="">Choisir un service</option>
+
+                        {SERVICES.map((item) => (
+                          <option key={item} value={item}>
+                            {item}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    {/* Description */}
+                    <div>
+                      <label
+                        htmlFor="details"
+                        className="block text-[12px] font-medium text-ink-muted mb-2"
+                      >
+                        Description du problème
+                      </label>
+
+                      <textarea
+                        id="details"
+                        value={details}
+                        onChange={(e) => setDetails(e.target.value)}
+                        placeholder="Expliquez le problème, les erreurs et depuis quand cela arrive"
+                        rows={6}
+                        required
+                        className="w-full rounded-[24px] border border-line bg-white px-4 py-4 text-[14px] text-ink shadow-sm focus:outline-none focus:border-accent-2"
+                      />
+                    </div>
+
+                    {/* Bouton */}
+                    <div className="flex flex-col items-center gap-4">
+                      <a
+                        href={isSubmitEnabled ? href : undefined}
+                        onClick={(e) => {
+                          if (!isSubmitEnabled) {
+                            e.preventDefault();
+                          }
+                        }}
+                        aria-disabled={!isSubmitEnabled}
+                        className={`inline-flex items-center justify-center rounded-full px-6 py-4 text-sm font-semibold text-white transition ${
+                          isSubmitEnabled
+                            ? "bg-accent hover:brightness-110"
+                            : "cursor-not-allowed bg-slate-400"
+                        }`}
+                      >
+                        Envoyer par e-mail
+                      </a>
+
+                      <p className="text-center text-xs text-ink-muted max-w-xs">
+                        Votre message sera pré-rempli avec les informations
+                        saisies avant l'envoi.
+                      </p>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
 }
